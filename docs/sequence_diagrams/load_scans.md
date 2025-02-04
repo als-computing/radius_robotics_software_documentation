@@ -17,7 +17,7 @@ sequenceDiagram
     participant adaptive as Adaptive
     participant scicat as SciCat
 
-    User ->> beamtime_ui: start loading
+    User ->> beamtime_ui: Click Start Loading Button
     
     activate run_manager
         beamtime_ui ->> run_manager: get sample info
@@ -29,10 +29,9 @@ sequenceDiagram
         run_manager ->> run_manager: calculate scans
         run_manager ->> beamtime_ui: new scan info
         
-        
+        note right of run_manager: See Edit Scans
     deactivate run_manager
     
-    run_manager ->> qs: schedule scans
 
 ```
 

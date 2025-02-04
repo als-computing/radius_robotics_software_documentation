@@ -1,6 +1,8 @@
 
 # Pause Scan
 
+The user wants to pause a scan.
+
 ``` mermaid
 
 sequenceDiagram

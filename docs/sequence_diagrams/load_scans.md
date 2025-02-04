@@ -1,6 +1,8 @@
 
 # Load Scan
 
+This use case kicks off the robot to scan bars, and the Run Manager to calculate the sequence of runs needed to fulfill the user's desires based on entries added to the sample database prior.
+
 ``` mermaid
 
 sequenceDiagram

@@ -1,6 +1,8 @@
 
 # Edit Scans
 
+Once scans have been loaded and displayed in the browser, the user may make changes to the order or values of the scans.
+
 ``` mermaid
 
 sequenceDiagram

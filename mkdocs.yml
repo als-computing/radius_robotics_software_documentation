@@ -1,0 +1,12 @@
+site_name: Radius Run Manager Documentation
+nav:
+  - Home: index.md
+  - Design:
+      - Sequence Diagrams:
+          - Callibration: sequence_diagrams/callibration.md
+          - Load Scans: sequence_diagrams/load_scans.md
+          - Edit Scans: sequence_diagrams/edit_scans.md
+          - Start Scans: sequence_diagrams/start_scans.md
+          - Pause Scans: sequence_diagrams/pause_scan.md
+theme:
+  name: material

@@ -3,9 +3,6 @@ The Radius Run Manager is a tool to bridge scan planning and robotic control for
 
 # Documentation
 
-This project uses [MkDocs](https://www.mkdocs.org/) to build the documentation. Follow the steps below to set it up and build the docs:
-
-
 # Design
 Several diagrams are being maintained here, including:
 * Sequence Diagrams

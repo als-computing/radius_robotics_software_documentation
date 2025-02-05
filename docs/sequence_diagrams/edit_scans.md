@@ -28,7 +28,7 @@ sequenceDiagram
 
             alt Run Manager accepts changes
                 run_manager ->> run_manager: Calculate Queue Changes
-                 run_manager ->> qs: Modify Queue
+              
             else Run Manager changes
                 run_manager ->> beamtime_ui: Notify Rejection
                 beamtime_ui ->> beamtime_ui: Display issues
@@ -40,3 +40,9 @@ sequenceDiagram
 
 ```
 
+
+
+notes
+- persist sample changes to scicat
+- remove queue modify here, save for later
+- no modification of queue serer until scan starting

@@ -14,9 +14,7 @@ sequenceDiagram
     participant run_manager as Run Manager
     participant qs as QueueServer
     participant robot as Robot
-    participant ericware as 7.3.3 Labview
-    participant bcs as BCS Labview
-    participant adaptive as Adaptive
+
     participant scicat as SciCat
 
     User ->> beamtime_ui: Click Start Loading Button

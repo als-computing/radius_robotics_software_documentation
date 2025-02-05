@@ -5,11 +5,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="../edit_scans/" rel="prev"/>
-<link href="../pause_scan/" rel="next"/>
+<link href="../load_scans/" rel="prev"/>
+<link href="../start_scans/" rel="next"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.2" name="generator"/>
-<title>Start Scans - Radius Run Manager Documentation</title>
+<title>Edit Scans - Radius Run Manager Documentation</title>
 <link href="../../assets/stylesheets/main.d7758b05.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#start-scans">
+<a class="md-skip" href="#edit-scans">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Start Scans
+              Edit Scans
             
           </span>
 </div>
@@ -125,7 +125,7 @@
 <input checked="" class="md-nav__toggle md-toggle" id="__nav_2_1" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
 <span class="md-ellipsis">
-    Sequence Diagrams
+    Use Cases
     
   </span>
 <span class="md-nav__icon md-icon"></span>
@@ -133,7 +133,7 @@
 <nav aria-expanded="true" aria-labelledby="__nav_2_1_label" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_2_1">
 <span class="md-nav__icon md-icon"></span>
-            Sequence Diagrams
+            Use Cases
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
@@ -152,17 +152,17 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../edit_scans/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<a class="md-nav__link md-nav__link--active" href="./">
 <span class="md-ellipsis">
     Edit Scans
     
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../start_scans/">
 <span class="md-ellipsis">
     Start Scans
     
@@ -198,8 +198,8 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="start-scans">Start Scans</h1>
-<p>The user kicks off the scans.</p>
+<h1 id="edit-scans">Edit Scans</h1>
+<p>Once scans have been loaded and displayed in the browser, the user may make changes to the order or values of the scans.</p>
 <div class="mermaid">
 sequenceDiagram
 
@@ -209,37 +209,32 @@ sequenceDiagram
     participant beamtime_ui as Beamtime UI
     participant run_manager as Run Manager
     participant qs as QueueServer
-    participant broker as MessageBroker
-    participant robot as Robot
-    participant ericware as 7.3.3 Labview
-    participant bcs as BCS Labview
-    participant adaptive as Adaptive
-    participant scicat as SciCat
 
 
     activate beamtime_ui
-        User -&gt;&gt; beamtime_ui: Click Start Button
-        beamtime_ui -&gt;&gt; run_manager: Send Start
+        User -&gt;&gt; beamtime_ui: Make Edits in UI, click Send
+        beamtime_ui -&gt;&gt; run_manager: Send Changes
     deactivate beamtime_ui
 
     activate run_manager
-        run_manager -&gt;&gt; qs: Notify QueueServer
+
+            alt Run Manager accepts changes
+                run_manager -&gt;&gt; run_manager: Calculate Queue Changes
+
+            else Run Manager changes
+                run_manager -&gt;&gt; beamtime_ui: Notify Rejection
+                beamtime_ui -&gt;&gt; beamtime_ui: Display issues
+            end
+
+
     deactivate run_manager
-    activate qs
-        par Do Run
-            qs -&gt;&gt; robot: do stuff
-        and 
-            qs -&gt;&gt; ericware: do stuff
-        and
-            qs -&gt;&gt; bcs: do stuff
-        and
-            qs -&gt;&gt; broker: run documents
-        and
-            broker -&gt;&gt; adaptive: run documents
-        end
-    deactivate qs
+
 
 </div>
+<p>notes
+- persist sample changes to scicat
+- remove queue modify here, save for later
+- no modification of queue serer until scan starting</p>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>

@@ -11,5 +11,6 @@ authors = [
 ]
 dependencies = [
     "mkdocs",
-    "mkdocs-material"
+    "mkdocs-material",
+    "mkdocs-mermaid2-plugin"
 ]

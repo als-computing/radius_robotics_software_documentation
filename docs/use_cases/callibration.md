@@ -1,7 +1,7 @@
 
 # Calibration
 
-TBD
+TBD.  Probably done entirely in the current beamline software?
 
 ``` mermaid
 

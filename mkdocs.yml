@@ -3,6 +3,7 @@ nav:
   - Home: index.md
   - Design:
       - Use Cases:
+          - Prepare Samples: use_cases/prepare_samples.md
           - Callibration: use_cases/callibration.md
           - Load Scans: use_cases/load_scans.md
           - Edit Scans: use_cases/edit_scans.md
